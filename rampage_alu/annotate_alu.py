@@ -6,15 +6,16 @@ Usage: annotate_alu.py [options] -f ref (-a alu | -r rep) <rampagedir>
 Options:
     -h --help                      Show help message.
     --version                      Show version.
-    -f ref                         Gene annotations (REF format).
+    -f ref                         Gene annotations.
     -t type                        File type of gene annotations.
                                    [default: ref]
     --promoter region              Promoter region. [default: 250]
     -a alu                         Alu annotations (BED format).
-    -r rep                         Repeatmasker annotations.
+    -r rep                         Repeatmasker annotations (RMSK format).
     --extend length                Alu extended length. [default: 50]
     --entropy entropy              Entropy cutoff. [default: 2.5]
     --span span                    Span cutoff. [default: 1000]
+    --coverage coverage            Coverage cutoff. [default: 0.5]
     -o out                         Output file. [default: alu_peak.txt]
 '''
 
@@ -41,6 +42,7 @@ def annotate(options):
     extend = int(options['--extend'])
     span = int(options['--span'])
     entropy = float(options['--entropy'])
+    coverage_percentage = float(options['--coverage'])
     output = options['-o']
     # prepare tmp files
     temp_dir = tempfile.mkdtemp()
@@ -99,7 +101,7 @@ def annotate(options):
             alu_end -= extend
             coverage = peak - alu_start
         alu_len = alu_end - alu_start
-        if coverage < alu_len * 0.5:
+        if coverage < alu_len * coverage_percentage:
             continue
         alu_info = '%s\t%d\t%d\t%s\t0\t%s' % (alu_chr, alu_start, alu_end,
                                               alu_name, alu_strand)
