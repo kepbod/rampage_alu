@@ -6,13 +6,14 @@ Usage: annotate_alu.py [options] -f ref (-a alu | -r rep) <rampagedir>
 Options:
     -h --help                      Show help message.
     --version                      Show version.
-    -f ref                         Gene annotations.
+    -f ref                         Gene annotations (REF format).
     -t type                        File type of gene annotations.
                                    [default: ref]
     --promoter region              Promoter region. [default: 250]
-    -a alu                         Alu annotations.
+    -a alu                         Alu annotations (BED format).
     -r rep                         Repeatmasker annotations.
     --extend length                Alu extended length. [default: 50]
+    --entropy entropy              Entropy cutoff. [default: 2.5]
     --span span                    Span cutoff. [default: 1000]
     -o out                         Output file. [default: alu_peak.txt]
 '''
@@ -39,6 +40,7 @@ def annotate(options):
     p_r = int(options['--promoter'])
     extend = int(options['--extend'])
     span = int(options['--span'])
+    entropy = float(options['--entropy'])
     output = options['-o']
     # prepare tmp files
     temp_dir = tempfile.mkdtemp()
@@ -80,7 +82,7 @@ def annotate(options):
     # filter alu peaks
     peak_lst = defaultdict(list)
     for p in alu_peak:
-        if float(p[13]) < 2.5:
+        if float(p[13]) < entropy:
             continue
         if not check_span(p, span):
             continue
