@@ -1,5 +1,7 @@
 ## A schematic flow shows the pipeline
 
+![workflow](https://github.com/kepbod/rampage_alu/blob/develop/workflow.jpg)
+
 ## Prerequisites
 
 ### Softwares
@@ -39,6 +41,11 @@ Options:
     * `rampage_minus_5end.bed`: BED file of the 5' end of minus strand read pairs
     * `rampage_minus_3read.bed`: BED file of the 3' end of minus strand read pairs
     * `rampage_link.bed`: BED file linking the 5' and 3' ends of read pairs
+
+Note:
+1. If there are multiple RAMPAGE BAM files (different replicates) derived from the same samples, you could simply list them afterwards.
+2. You could run with multiple threads using `-p THREAD`.
+3. You could set the minimum read filter for read pairs using `--min=MIN`.
 
 Example: 
 
@@ -83,6 +90,12 @@ Format of `rampage_peaks.txt`:
 | End_Fseq    | End of F-seq peak region      |
 | RPM         | RPM of peak region            |
 
+Note:
+
+1. You could set feature length for F-seq peak calling using `-l LENGTH`.
+2. You could create wig files by setting `--wig`.
+3. You could run with multiple threads using `-p THREAD`.
+
 Example: 
 
 ```
@@ -109,11 +122,16 @@ Format of `rampage_entropy.txt`:
 
 The first thirteen columns of `rampage_entropy.txt` are the same as `rampage_peaks.txt`.
 
-The additional two columns are listed below
+The additional two columns are listed below:
+
 | Field       | Description                   |
 | :---------: | :---------------------------- |
 | Entropy     | Entropy of RAMPAGE peak       |
 | 3' end      | 3' end of read pairs in peak  |
+
+Note:
+
+1. You could run with multiple threads using `-p THREAD`.
 
 Example: 
 
@@ -154,7 +172,8 @@ Format of expressed Alu file:
 
 The first fifteen columns are the same as `rampage_entropy.txt`.
 
-The additional six columns are listed below
+The additional six columns are listed below:
+
 | Field       | Description                   |
 | :---------: | :---------------------------- |
 | Chrom       | Chromosome of Alu             |
@@ -164,6 +183,16 @@ The additional six columns are listed below
 | Score       | 0                             |
 | Strand      | Strand of Alu                 |
 
+Note:
+
+1. The the default format of gene annotation file is [Gene Predictions and RefSeq Genes with Gene Names](https://genome.ucsc.edu/FAQ/FAQformat.html#format9) format. You could use gene annotation file in BED format by setting `-t bed`.
+2. If using Repeatmask annotation file, you could download them from UCSC.
+3. You could set the promoter region length using `--promoter region`.
+4. You could set the Alu annotation extension length using `--extend length`.
+5. You could set entropy cutoff using `--entropy entropy`.
+6. You could set RAMPAGE effective length cutoff using `--span span`.
+7. You could set Alu coverage cutoff using `--coverage coverage`.
+
 Example: 
 
 ```
@@ -171,4 +200,5 @@ annotate_alu.py -f ref.txt -a alu.bed -o alu_peak.txt rampage_peak
 ```
 
 ## License
+
 Copyright (C) 2018-2019 Xiao-Ou Zhang. See the [LICENSE](https://github.com/kepbod/rampage_alu/blob/master/LICENSE) file for license rights and limitations (MIT).
