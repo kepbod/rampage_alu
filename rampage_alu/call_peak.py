@@ -23,7 +23,7 @@ from seqlib.helper import run_command
 from seqlib.ngs import check_bed
 
 __author__ = 'Xiao-Ou Zhang <xiaoou.zhang@umassmed.edu>'
-__version__ = '0.0.1'
+__version__ = '1.0.0'
 
 
 def fseq(options):
