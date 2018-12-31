@@ -6,7 +6,7 @@
 
 ### Softwares
 
-* [fseq](http://fureylab.web.unc.edu/software/fseq/)
+* [F-seq](http://fureylab.web.unc.edu/software/fseq/)
 
 ### Python libraries 
 
