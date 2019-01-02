@@ -1,3 +1,5 @@
+# Pipeline to identify expressed Alu elements using RAMPAGE
+
 ## A schematic flow shows the pipeline
 
 ![workflow](https://github.com/kepbod/rampage_alu/blob/develop/workflow.jpg)
