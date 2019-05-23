@@ -159,7 +159,7 @@ def parse_alu(options):
         for line in f:
             items = line.rstrip().split()
             if check and items[12] != 'Alu':
-                    continue
+                continue
             chrom = items[index['c']]
             start = int(items[index['s']])
             end = int(items[index['e']])
