@@ -19,7 +19,7 @@ from seqlib.ngs import check_bam
 from seqlib.seq import dna_to_rna
 
 __author__ = 'Xiao-Ou Zhang <xiaoou.zhang@umassmed.edu>'
-__version__ = '0.0.1'
+__version__ = '1.0.0'
 
 
 def rm_pcr(options):
