@@ -2,7 +2,7 @@
 
 ## A schematic flow shows the pipeline
 
-![workflow](https://github.com/kepbod/rampage_alu/blob/develop/workflow.jpg)
+![workflow](https://github.com/kepbod/rampage_alu/blob/master/workflow.jpg)
 
 ## Prerequisites
 
