@@ -200,6 +200,9 @@ Example:
 ```
 annotate_alu.py -f ref.txt -a alu.bed -o alu_peak.txt rampage_peak
 ```
+## Citation
+
+[Zhang XO, Gingeras TR, Weng Z#. Genome-wide analysis of polymerase III-transcribed Alu elements suggests cell type-specific enhancer function. *Genome Res*. 2019, 29:1402-1414](https://genome.cshlp.org/content/29/9/1402.abstract)
 
 ## License
 
